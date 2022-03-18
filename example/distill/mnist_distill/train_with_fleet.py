@@ -28,6 +28,8 @@ import paddle.fluid as fluid
 from paddle.fluid.incubate.fleet.collective import fleet
 from paddle.fluid.incubate.fleet.base import role_maker
 
+paddle.enable_static()
+
 
 def parse_args():
     parser = argparse.ArgumentParser("mnist")
