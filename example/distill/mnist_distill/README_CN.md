@@ -23,7 +23,8 @@ teacher服务使用paddle_serving部署(serving使用详细请参考[PaddleServi
 输出为{name='fc_0.tmp_2', shape=(10,), dtype='float32'}的图像类别预测概率值。
 ``` bash
 wget --no-check-certificate https://paddle-edl.bj.bcebos.com/distill_teacher_model/mnist_cnn_model.tar.gz
-python -m paddle_serving_server_gpu.serve \
+tar -zxf mnist_cnn_model.tar.gz
+python -m paddle_serving_server.serve \
   --model mnist_cnn_model \
   --thread 4 \
   --port 9292 \
@@ -32,6 +33,7 @@ python -m paddle_serving_server_gpu.serve \
 ```
 ### 2.2 运行蒸馏训练
 训练启动命令如下，use_distill_service设置训练为蒸馏训练，distill_teachers设置本地固定teacher地址用于训练。
+client端的训练需要paddle serving一些依赖的支持。该依赖可以通过运行 [paddle_env_install] (https://github.com/PaddlePaddle/Serving/blob/v0.8.3/tools/paddle_env_install.sh) 脚本来安装。
 ``` bash
 export CUDA_VISIBLE_DEVICES=0 
 python train_with_fleet.py --use_distill_service True --distill_teachers 127.0.0.1:9292
