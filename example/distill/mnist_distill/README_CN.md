@@ -15,7 +15,7 @@ edl将student的发送接收数据部分封装成了DistillReader，用户关注
 这两部分在后面章节介绍，本节介绍在已有teacher模型和student训练代码下，本地蒸馏训练调试的流程，启动脚本见[run.sh](./run.sh)。
 启动前先安装依赖的python包
 ``` bash
-pip install paddle-edl paddle-serving-client paddle-serving-server-gpu
+pip install paddle-edl paddle-serving-client==0.6.1 paddle-serving-server-gpu==0.6.1.post102
 ```
 ### 2.1 启动本地teacher服务
 teacher服务使用paddle_serving部署(serving使用详细请参考[PaddleServing](https://github.com/PaddlePaddle/Serving))。
